@@ -17,7 +17,7 @@ public class IrDescriptorTest {
 	}
 
 	@Test
-	void differentSelectionsSameSingleWinnerMarketAreInterrelated() {
+	void differentSelectionsAndSameSingleWinnerMarketsAreInterrelated() {
 		var descriptor1 = new IrDescriptor(11, 1, 1);
 		var descriptor2 = new IrDescriptor(12, 1, 1);
 
@@ -27,7 +27,7 @@ public class IrDescriptorTest {
 	}
 
 	@Test
-	void differentSelectionsSameMultiWinnerMarketAreNotInterrelated() {
+	void differentSelectionsAndSameMultiWinnerMarketsAreNotInterrelated() {
 		var descriptor1 = new IrDescriptor(11, 1, null);
 		var descriptor2 = new IrDescriptor(12, 1, null);
 
@@ -37,7 +37,7 @@ public class IrDescriptorTest {
 	}
 
 	@Test
-	void differentSelectionsDifferentMarketsAreNotInterrelated() {
+	void differentSelectionsAndDifferentMarketsAreNotInterrelated() {
 		var descriptor1 = new IrDescriptor(11, 1, 1);
 		var descriptor2 = new IrDescriptor(21, 2, 1);
 
@@ -47,7 +47,7 @@ public class IrDescriptorTest {
 	}
 
 	@Test
-	void unknownDescriptorIsNotInterrelated() {
+	void unknownDescriptorIsNeverInterrelated() {
 		var descriptor = new IrDescriptor(11, 1, 1);
 
 		var interrelated = descriptor.isInterrelated(IrDescriptor.UNKNOWN);
@@ -56,7 +56,7 @@ public class IrDescriptorTest {
 	}
 
 	@Test
-	void sameMarketDifferentMaxWinnersIsIllegal() {
+	void sameMarketsWithDifferentMaxWinnersAreIllegal() {
 		var descriptor1 = new IrDescriptor(11, 1, 1);
 		var descriptor2 = new IrDescriptor(12, 1, 2);
 
