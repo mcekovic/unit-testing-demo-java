@@ -39,7 +39,7 @@ public abstract class BetAssertions {
 
 		public BetResultAssert isEmpty() {
 			isNotNull();
-			if (!actual.equals(BetResult.EMPTY))
+			if (!actual.isEmpty())
 				failWithMessage("Expected betResult %s to be empty", actual);
 			return this;
 		}

@@ -108,16 +108,14 @@ class BetTest {
 	}
 
 	@Test
-	void betWithAllInterrelatedSelectionsIsEmpty() {
+	void betWithAllInterrelatedUnitsIsInvalid() {
 		var bet = new Bet(new Perms(2), "1", List.of(
 				new BetLeg("2", new IrDescriptor(11, 1, 1)),
 				new BetLeg("3", new IrDescriptor(12, 1, 1)),
 				new BetLeg("4", new IrDescriptor(13, 1, 1))
 		));
 
-		var result = bet.calculate();
-
-		assertThatBetResult(result).isEmpty();
+		assertThatThrownBy(bet::calculate).isInstanceOf(IllegalStateException.class);
 	}
 
 	@Test

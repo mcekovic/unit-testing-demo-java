@@ -28,11 +28,14 @@ public class Bet {
 	}
 
 	public BetResult calculate() {
-		return bankerAwareCombinations()
+		var result = bankerAwareCombinations()
 			.map(legs -> new BetUnit(legs, unitStake))
 			.filter(this::isValidUnit)
 			.map(BetUnit::getResult)
 			.reduce(BetResult.EMPTY, BetResult::add);
+		if (result.isEmpty())
+			throw new IllegalStateException("No valid units");
+		return result;
 	}
 
 	private Stream<List<BetLeg>> bankerAwareCombinations() {

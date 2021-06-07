@@ -20,4 +20,8 @@ public class BetResult {
 			maxReturn.add(result.maxReturn)
 		);
 	}
+
+	public boolean isEmpty() {
+		return equals(EMPTY);
+	}
 }
